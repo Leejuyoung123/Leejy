@@ -1,7 +1,12 @@
 package kr.or.test;
 
 public class Step1 {
-
+	int ab;
+	int ba;
+	public Step1(int a ,int b){
+	ab=a;
+	ba=b;
+	}
 	public static void main(String[] args) {
 		System.out.println("------------------------------------");
 		System.out.println("클래스를 사용하지 않는 내장변수 자료형 소스");
