@@ -1,11 +1,8 @@
 package kr.or.test;
-
 public class Step1 {
-	int ab;
-	int ba;
-	public Step1(int a ,int b){
-	ab=a;
-	ba=b;
+	  
+	public Step1() {
+		// public step1 class 의 디폴트생성자 
 	}
 	public static void main(String[] args) {
 		System.out.println("------------------------------------");
@@ -17,6 +14,7 @@ public class Step1 {
 		name = "홍길동";
 		age = 45;
 		phoneNum = "000-0000-0000";
+		 // printMember메서드 매개변수 name, age ,phone num 
 		printMember(name, age, phoneNum);
 		name = "성춘향";
 		age = 100;
