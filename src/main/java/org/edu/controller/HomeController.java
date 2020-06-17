@@ -43,6 +43,7 @@ public class HomeController {
 	public String contactus(Locale locale, Model model) {
 
 		return "sample/contactus";
+		
 	}
 
 	/**

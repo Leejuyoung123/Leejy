@@ -22,7 +22,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="org.edu.controller" />
-	
-	
+
+	<!-- 패키지 추가시 context 패키지경로명 -->
 	
 </beans:beans>
