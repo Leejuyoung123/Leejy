@@ -3,8 +3,8 @@ package kr.or.member;
 public class MemberVO {
 	private String name;
 	private int age;
-	private String phoneNum;
-	@Override
+	private String phoneNum; 
+	@Override   // 오버라이드 메서드 재정의 
 	public String toString() {
 		return "MemberVO클래스 [이름은=" + name + ", 나이는=" + age + ", 전화번호는=" + phoneNum + "]";
 	}
