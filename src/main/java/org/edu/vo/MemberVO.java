@@ -1,7 +1,7 @@
 package org.edu.vo;
 
 import java.util.Date;
-
+//
 public class MemberVO {
 	
 	  private String user_id; 

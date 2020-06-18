@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 
-/*
+/* 
  * @RequestMapping에 지정된 URL로 브라우저의 요청 URL이 매핑되게 된다 만약 <annotation-driven />를 지우면
  * URL을 찾을 수 없다는 오류가 발생한다.
  */

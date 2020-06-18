@@ -3,7 +3,7 @@ package kr.or.test;
 import org.apache.log4j.Logger;
 
 public class Log4jTest {
-
+//  기술참조 https://smujihoon.tistory.com/121
 	private void test() {
 	MemberVO memberVO =new MemberVO();
 	memberVO.setName("홍길동");
