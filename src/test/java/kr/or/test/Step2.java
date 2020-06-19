@@ -8,7 +8,7 @@ class MemberVO {
 	@Override
 	//  이 메서드는 객체를 문자열 형태로 바꿔서 String형태로 반환하는 것이다
 	public String toString() {
-		return "MemberVO클래스 [이름은=" + name + ", 나이는=" + age + ", 전화번호는=" + phoneNum + "]";
+		return "MemberVO클래스 [이름은 =" + name + ", 나이는 =" + age + ", 전화번호는 =" + phoneNum + "]";
 	}
 	public String getName() {
 		return name;

@@ -292,7 +292,7 @@ CREATE TABLE IF NOT EXISTS `tbl_member` (
 -- 테이블의 덤프 데이터 `tbl_member`
 ---
 
-INSERT INTO `tbl_member` (`user_id`, `user_pw`, `user_name`, `email`, `point`, `enabled`, `level`, `reg_date`, `update_date`) VALUES
+INSERT INTO `tbl_member` (`user_id`, `user_pw`, `user_name`, `email`, `point`, `enabled`, `levels`, `reg_date`, `update_date`) VALUES
 ('user02', '$2a$10$kIqR/PTloYan/MRNiEsy6uYO6OCHVmAKR4kflVKQkJ345nqTiuGeO', 'user02', 'user02@edu.com', 0, 1, 'ROLE_ADMIN', '2019-10-15 10:41:44', '2019-10-15 10:41:44');
 
 -- --------------------------------------------------------
