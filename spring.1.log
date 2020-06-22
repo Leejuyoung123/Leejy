@@ -1,0 +1,4 @@
+2020-06-22 10:41:49,244  INFO [kr.or.test.Log4jTest] info
+2020-06-22 10:41:49,245  WARN [kr.or.test.Log4jTest] warn
+2020-06-22 10:41:49,245 ERROR [kr.or.test.Log4jTest] error
+2020-06-22 10:41:49,245 FATAL [kr.or.test.Log4jTest] fatal

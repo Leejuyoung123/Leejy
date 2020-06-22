@@ -1,4 +1,4 @@
-package kr.or.test;
+/*package kr.or.test;
 
 	
 public class StringBuilder {
@@ -17,4 +17,4 @@ public class StringBuilder {
 	str=sb.toString();
 		System.out.println(str);
 	}
-	}
+}*/  // XmlUtils 내용과 중첩이 되서 주석처리

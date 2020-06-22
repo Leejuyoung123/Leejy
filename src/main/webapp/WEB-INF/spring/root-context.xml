@@ -11,6 +11,7 @@
 		<jdbc:script location= "classpath:/db/edu_hsql.sql"/>
 	</jdbc:embedded-database>
 	
+	
 	<!-- 테스트 실행용 DB매니저 실행:실제 사용시 아래 value - - 공백제거 하세요. 
 	<bean depends-on="dataSource"
 	class="org.springframework.beans.factory.config.MethodInvokingBean">
@@ -46,5 +47,5 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="apmsetup"></property>
 	</bean>
-	-->	
+		-->
 </beans>
