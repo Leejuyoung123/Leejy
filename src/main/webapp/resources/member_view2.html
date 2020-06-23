@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
 <style>
-.box2 {
-	border: solid red;
+.boxview {
+	border: solid ORANGE;
 }
 </style>
 <meta charset="utf-8">
@@ -114,13 +114,13 @@
 		
 		<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-  <div class="box2" >
+  <div class="boxview" >
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">DashBoard Management <small>priview</small></h1>
+            <h1 class="m-0 text-dark">member_view.html</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -133,8 +133,8 @@
         
        <div class="col-12">
             <!-- general form elements disabled -->
-            <div class="card card-primary">
-              <div class="card-header" style="padding-top:0px;">
+            <div class="card">
+              <div class="card-header" >
                 <h3 class="card-title"></h3>
               </div>
               <!-- /.card-header -->
@@ -144,15 +144,9 @@
                     <div class="col-sm-12">
                       <!-- text input -->
                       <div class="form-group">
-                      <h3>CREATE Member</h3>
+                      <h3>READ Member</h3>
                         <label>user_id</label>
-                        <input type="text" class="form-control" placeholder="Enter user_id">
-                      </div>
-                    </div>
-                     <div class="col-sm-12">
-                      <div class="form-group">
-                        <label>user_pw</label>
-                        <input type="text" class="form-control" placeholder="Enter user_pw">
+                        <p>user02</p>
                       </div>
                     </div>
                   </div>
@@ -161,46 +155,40 @@
                       <!-- textarea -->
                         <div class="form-group">
                         <label>user_name</label>
-                        <input type="text" class="form-control" placeholder="Enter user_name">
-                      </div>
-                    </div>
-                     <div class="col-sm-12">
-                     <div class="form-group">
-                        <label>이메일</label>
-                        <input type="text" class="form-control" placeholder="Enter email">
-                      </div>
-                     <div class="col-sm-12">
-                     <div class="form-group">
-                        <label>point</label>
-                        <input type="text" class="form-control" placeholder="0">
-                      </div>
-                      <lable>enabled</lable>
-                     <div>
-                     <select name='enabled'>
-  						<option value=''>-- 선택 --</option>
-  						<option value='false' selected>false</option>
-  					</select>
+                        <p>user02</p>
                      </div>
+                    </div>
+                    </div>
+                    <div class="row">	
+                     <div class="col-sm-12">
+                     <div class="form-group">
+                      <label>이메일</label>
+                      <p>user02@edu.com</p>
+                      </div>
+                      </div>
+                      </div>
+                      <div class="row">
+                     <div class="col-sm-12">
+                     <div class="form-group">
+                      <label >point</label>
+                      <p>0</p>
                      <br>
                      <lable>level</lable>
-                     <div>
-                     <select name='level'>
-  						<option value=''>-- 선택 --</option>
-  						<option value='ROLE_USER' selected>ROLE_USER</option>
-  					</select>
+                     <p>ROLE_ADMIN</p>
                      </div>
                   </div>
-                  <hr>
-                  <br> 
+                 </div>
+                 </div>
+                 </div>
+					<hr>
+					<br>
+                 
                   <hr>
                   <!-- //줄바꿈
              // 수평선 -->
-                  <button type="button" class="btn btn-warning">Submit</button>
+                  <button type="button" class="btn btn-warning">UPDATE</button>
+                  <button type="button" class="btn btn-danger">DELETE</button>
                   <button type="button" class="btn btn-primary">List All</button>
-                  </div>
-                 </div>
-                </div>
-               </div>
                 </form>
               </div>
               <!-- /.card-body -->

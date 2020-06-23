@@ -12,16 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /*https://all-record.tistory.com/167?category=733072
- *
- *
- * Handles requests for the application home page.
- */
+  Handles requests for the application home page.
+ 															*/
 @Controller
-
 /* 
- * @RequestMapping에 지정된 URL로 브라우저의 요청 URL이 매핑되게 된다 만약 <annotation-driven />를 지우면
- * URL을 찾을 수 없다는 오류가 발생한다.
- */
+ * @RequestMapping에 지정된 URL로 브라우저의 요청 URL이 매핑되게 된다 만약 
+ * <annotation-driven />를 지우면 URL을 찾을 수 없다는 오류가 발생한다.
+ 															*/
 
 public class HomeController {
 
@@ -89,9 +86,10 @@ public class HomeController {
 
 	@RequestMapping(value = "/sample/", method = RequestMethod.GET)
 	public String sample(Locale locale, Model model) {
-	/*	@Controller는 Sample
+	
+		
+		/*	@Controller는 Sample
 		클래스를 컨트롤러로 설정하는 애노테이션이다.*/
-
 		
 		return "sample/home";
 	}
@@ -101,8 +99,10 @@ public class HomeController {
 	 */
 
 	/*
-	 * servlet-context에 의해 브라우저의 요청은 HomeController로 넘어가게 된다. 여기에서 home( ) 를 보면 현재
-	 * 날짜와 시간을 가져온 후 이것을 문자열을 만든다. 이 후 작업의 결과를 model에 담고 home 라는 뷰 이름을 반환한다.
+	 * servlet-context에 의해 브라우저의 요청은 HomeController로 넘어가게 된다. 
+	 * 여기에서 home( ) 를 보면 현재날짜와 시간을 
+	 * 가져온 후 이것을 문자열을 만든다. 
+	 * 이 후 작업의 결과를 model에 담고 home 라는 뷰 이름을 반환한다.
 	 */
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)

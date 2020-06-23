@@ -144,52 +144,30 @@
                     <div class="col-sm-12">
                       <!-- text input -->
                       <div class="form-group">
-                      <h3>CREATE Member</h3>
-                        <label>user_id</label>
-                        <input type="text" class="form-control" placeholder="Enter user_id">
-                      </div>
-                    </div>
-                     <div class="col-sm-12">
-                      <div class="form-group">
-                        <label>user_pw</label>
-                        <input type="text" class="form-control" placeholder="Enter user_pw">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <!-- textarea -->
-                        <div class="form-group">
-                        <label>user_name</label>
-                        <input type="text" class="form-control" placeholder="Enter user_name">
-                      </div>
-                    </div>
-                     <div class="col-sm-12">
-                     <div class="form-group">
-                        <label>이메일</label>
-                        <input type="text" class="form-control" placeholder="Enter email">
-                      </div>
-                     <div class="col-sm-12">
-                     <div class="form-group">
-                        <label>point</label>
-                        <input type="text" class="form-control" placeholder="0">
-                      </div>
-                      <lable>enabled</lable>
-                     <div>
-                     <select name='enabled'>
-  						<option value=''>-- 선택 --</option>
-  						<option value='false' selected>false</option>
-  					</select>
+                      <h3>CREATE Board</h3>
+                        <form>
+						 	<div class="form-group">
+    						<label for="exampleTitle">Title</label>
+    						<input type="text" class="form-control" id="exampleTitle" placeholder="Enter Title">
+  							</div>
+  							<div class="form-group">
+    						<label for="exampleTextarea">Content</label>
+    						<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Enter .."></textarea>
+  							</div>
+  							<div class="form-group">
+    						<label for="exampleWrite">Write</label>
+    						<input type="text" class="form-control" id="exampleWrite" placeholder="Enter Write">
+  							</div>
+  							<div class="form-group">
+  							 <label for="exampleFormControlFile1">아래 기존 파일 업로드 창 사용가능</label>
+    						 <input type="file" class="form-control-file" id="exampleFormControlFile1" VALUE="파일선택">
+  							</div>
+  						</form>
                      </div>
                      <br>
-                     <lable>level</lable>
-                     <div>
-                     <select name='level'>
-  						<option value=''>-- 선택 --</option>
-  						<option value='ROLE_USER' selected>ROLE_USER</option>
-  					</select>
                      </div>
                   </div>
+                  </form>
                   <hr>
                   <br> 
                   <hr>
