@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import org.edu.dao.IF_MemberDAO;
 import org.edu.vo.MemberVO;
 import org.springframework.stereotype.Service;
-
+//.
 @Service
 public class MemberServiceImpl implements IF_MemberService{
 	@Inject

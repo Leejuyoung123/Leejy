@@ -9,7 +9,7 @@ import org.edu.vo.MemberVO;
 import org.springframework.stereotype.Repository;
 @Repository
 public class MemberDAOImpl implements IF_MemberDAO {
-
+//.
 	private static String mapperQuery = "org.edu.dao.IF_MemberDAO";
 	
 	@Inject
