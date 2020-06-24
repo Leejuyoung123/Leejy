@@ -9,7 +9,6 @@
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
-</div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
@@ -20,3 +19,23 @@
 <script src="/resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/resources/dist/js/adminlte.min.js"></script>
+
+<!-- footer.jsp 하단에 저장 : 아래 [클래스명을입력]부분을 학생이 채우세요... -->
+<script>
+$(document).ready(function() {
+    var current = location.pathname;
+    $('.nav-treeview li a').each(function(){
+        var $this = $(this);
+        if (current=="/admin" || current=="/admin/"){
+       		
+       	}else{
+        if($this.attr('href').includes(current) == true){
+        	$this.addClass('active');
+           
+        }else{
+        	$this.removeClass('active');
+        }
+       }
+    })
+ });
+</script>

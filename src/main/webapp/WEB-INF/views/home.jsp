@@ -11,5 +11,8 @@
 	<h3>
 		<a href="/sample/">반응형 포트폴리오 바로가기</a>
 	</h3>
+	<h3>
+	<a href="/admin">관리자 화면 바로가기</a>
+	</h3>
 </body>
 </html>

@@ -9,8 +9,8 @@ import java.net.URL;
 import java.util.Calendar;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-/* 파싱 : xml,json 데이터를 웹페이지 형식으로 데이터를 조립해 원하는 데이터를 빼내는 
- * 프로그램을 하는것 컴퓨터 과학에서 parsing은 일련의 문자열을 의미있는 
+/* 파싱 : xml,json 데이터를 웹페이지 형식으로 
+ * 데이터를 조립해 원하는 데이터를 빼내는프로그램을 하는것  
  * token(어휘 분석의 단위) 으로 분해하고 그것들로 이루어진 Parse tree를 만드는 과정
  */
 
