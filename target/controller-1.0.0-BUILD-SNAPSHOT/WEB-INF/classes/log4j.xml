@@ -9,10 +9,17 @@
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
 		</layout>
 	</appender>
+	<!-- 파일에 로그 찍기! -->
+    <appender name="fileLogger" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="c://egov//spring.Log"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+        </layout>
+    </appender>
 	
-	<!-- Application Loggers -->
-	<logger name="org.edu.controller">
-		<level value="info" />
+	<!--  Application Loggers -->
+	<logger name="kr.or.test">
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -36,6 +43,7 @@
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
+		<appender-ref ref="fileLogger" />
 	</root>
 	
 </log4j:configuration>

@@ -1,6 +1,2 @@
-2020-06-24 17:22:32,025  INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
-2020-06-24 17:22:32,103  INFO [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory] Starting embedded database: url='jdbc:hsqldb:mem:dataSource', username='sa'
-2020-06-24 17:22:32,306  INFO [org.springframework.jdbc.datasource.init.ScriptUtils] Executing SQL script from class path resource [db/edu_hsql.sql]
-2020-06-24 17:22:32,321  INFO [org.springframework.jdbc.datasource.init.ScriptUtils] Executed SQL script from class path resource [db/edu_hsql.sql] in 15 ms.
-2020-06-24 17:22:32,528  INFO [org.springframework.web.context.support.GenericWebApplicationContext] Closing org.springframework.web.context.support.GenericWebApplicationContext@6e6c3152: startup date [Wed Jun 24 17:22:31 KST 2020]; root of context hierarchy
-2020-06-24 17:22:32,529  INFO [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory] Shutting down embedded database: url='jdbc:hsqldb:mem:dataSource'
+2020-06-25 16:12:32,126  INFO [org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory] Shutting down embedded database: url='jdbc:hsqldb:mem:dataSource'
+2020-06-25 16:12:32,126 DEBUG [org.springframework.jdbc.datasource.SimpleDriverDataSource] Creating new JDBC Driver Connection to [jdbc:hsqldb:mem:dataSource]
