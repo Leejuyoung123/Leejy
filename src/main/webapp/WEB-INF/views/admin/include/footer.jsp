@@ -29,7 +29,9 @@ $(document).ready(function() {
         if (current=="/admin" || current=="/admin/"){
        		
        	}else{
-        if($this.attr('href').includes(current) == true){
+        // if($this.attr('href').includes(current) == true){
+        	//  크로스 브라우징 : //웹브라우저에서는 active 활성화가되는데 이클립스 브라우저 에서는 되지 않아서 수정 indexof 0 ,-1 비교 
+        if($this.attr('href').indexOf(current) != -1){
         	$this.addClass('active');
            
         }else{

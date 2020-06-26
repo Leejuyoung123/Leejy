@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mapper 인터페이스를 이용하는 또 다른 장점은 기존의 XML 을 그대로 사용할 수 있음. 이때 두가지 규칙이 있음. 1. 
+	Mapper 인터페이스 이름과 XML Mapper 의 네임스페이스를 반드시 일치시킬 것. 2. Mapper 인터페이스의 메서드 이름과 
+	XML 의 id 를 반드시 일치시킴. root-context.xml :: sqlSessionFactory 에 매퍼 xml 파일의 경로를 
+	인식하게 함. -->
+	
+<!-- 환경설정 > mappers 쿼리만들기 > vo > dao > service > junit test > 화면연동  -->	
+<!-- 쿼리파일 xml  -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  -->
+<mapper namespace="org.edu.dao.IF_BoardDAO">
+	<!-- 입력쿼리  -->
+	<insert id="insertBoard">
+	CREATE MEMORY TABLE tbl_board(bno,title,content,writer,regdate,update_date,view_count ,reply_count)
+	insert into tbl_board
+	values	(#{bno},#{title},#{content},#{writer},now(),
+			 #{view_count},#{reply_count})
+	</insert>
+	
+	<!-- 조회쿼리 -->
+	<select id="selectBoard" resultType="org.edu.vo.BoardVO">
+	select* from tbl_board  order by regdate DESC
+	</select>
+	
+	<!-- 수정쿼리 -->
+	<!-- 전송한 유저 id 만 update -->
+	
+	<update id="updateBoard">
+	update tbl_board set 
+	content     = #{content},
+	writer      = #{writer},
+	update_date = #{update_date},
+	view_count  = #{view_count},
+	reply_count = #{reply_count},
+	where bno =#{bno}
+	</update>
+
+	<!-- 삭제쿼리 -->
+	<delete id="deleteBoard">
+		delete from tbl_board 
+		where bno = #{bno}
+	</delete>
+	<select id="getUserId" resultType="string">
+		select user_id
+		from tbl_board
+		where user_name = #{user_name}
+		 </select>
+</mapper>
