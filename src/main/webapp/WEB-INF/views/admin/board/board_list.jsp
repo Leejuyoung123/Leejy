@@ -76,7 +76,7 @@ pageEncoding="UTF-8"%>
                     <c:forEach items ="${boardList}" var="boardVO" varStatus="status">
                     <tr>
                       <th>${boardVO.bno}</th>
-                      <th>${boardVO.title}</th>
+                      <th><a href="/admin/board/view?bno=${boardVO.bno}">${boardVO.title}</a></th>
                       <th>${boardVO.writer}</th>
                       <th>${boardVO.regdate}</th>
                       <td class="right badge badge-danger">${boardVO.view_count }</td>

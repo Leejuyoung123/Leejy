@@ -7,9 +7,10 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.edu.vo.MemberVO;
 import org.springframework.stereotype.Repository;
+
 @Repository
 public class MemberDAOImpl implements IF_MemberDAO {
-//.
+
 	private static String mapperQuery = "org.edu.dao.IF_MemberDAO";
 	
 	@Inject
@@ -31,9 +32,14 @@ public class MemberDAOImpl implements IF_MemberDAO {
 	}
 
 	@Override
-	public void deleteMember(String  user_id) throws Exception {
+	public void deleteMember(String user_id) throws Exception {
 		sqlSession.delete(mapperQuery + ".deleteMember", user_id);
 		
+	}
+
+	@Override
+	public MemberVO viewMember(String user_id) throws Exception {
+		return sqlSession.selectOne(mapperQuery + ".viewMember", user_id);
 	}
 
 }

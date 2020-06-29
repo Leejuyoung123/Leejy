@@ -98,7 +98,7 @@
               </div>	<!-- card card-secondary -->
               
               <div>
-              <button type="button" class="btn btn-primary">List All</button>
+              <a href="/admin/member/write" class="btn btn-primary">CREATE</a>
               <div class ="btn">
               <button type="button" class="btn btn-primary" >1</button>
               </div>
