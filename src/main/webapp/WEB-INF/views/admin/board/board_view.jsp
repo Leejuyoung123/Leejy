@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/header.jsp"%>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<div class="content-header">
 		<div class="container-fluid">
 			<div class="row mb-2">
-			
+
 				<div class="col-sm-12">
 					<h1 class="m-0 text-dark">DashBoard Management</h1>
 				</div>
@@ -44,7 +44,9 @@ pageEncoding="UTF-8"%>
 							<div class="col-sm-12">
 								<!-- text input -->
 								<div class="form-group">
-									<label>Content</label> <br> ${boardVO.content}
+									<label>Content</label> <br>
+									<textarea name="content" class="form-control"
+										id="exampleTextarea" rows="3" placeholder="Enter ..Writer">${boardVO.content}</textarea>
 								</div>
 							</div>
 
@@ -55,9 +57,9 @@ pageEncoding="UTF-8"%>
 								</div>
 							</div>
 							<div class="buttons">
-								<button type="submit" class="btn btn-warning">UPDATE</button>
+								<a href="/admin/board/update?bno=${boardVO.bno}" type="submit" class="btn btn-warning">UPDATE</a>
 								<button type="submit" class="btn btn-danger">DELETE</button>
-								<a href="/admin/board/list" class="btn btn-primary">LIST ALL</a></button>
+								<a href="/admin/board/list" class="btn btn-primary">LIST ALL</a>
 							</div>
 						</div>
 
@@ -152,4 +154,4 @@ pageEncoding="UTF-8"%>
 	</div>
 </div>
 <!-- //Content Wrapper -->
-<%@include file="../include/footer.jsp" %>
+<%@include file="../include/footer.jsp"%>

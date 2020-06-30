@@ -21,9 +21,41 @@ public class AdminController {
 	
 	@Inject
 	private IF_BoardService boardService;
-	
 	@Inject
 	private IF_MemberService memberService;
+	
+	/**
+	 * 게시물관리 > 등록 입니다.
+	 * @throws Exception 
+	 */
+	// 오버로딩
+	@RequestMapping(value = "/admin/board/write", method = RequestMethod.GET)
+	public String boardWrite(Locale locale, Model model) throws Exception {
+		
+		return "admin/board/board_write";
+	}
+	@RequestMapping(value = "/admin/board/write", method = RequestMethod.POST)
+	public String boardWrite(BoardVO boardVO ,Locale locale, Model model) throws Exception {
+		boardService.insertBoard(boardVO);
+		return "redirect:/admin/board/list";
+	}
+	/**
+	 * 게시물관리 > 수정 입니다.
+	 * @throws Exception 
+	 */
+	// 오버로딩
+	@RequestMapping(value = "/admin/board/update", method = RequestMethod.GET)
+	public String boardUpdate(@RequestParam("bno") Integer bno ,Locale locale, Model model) throws Exception {
+		BoardVO boardVO = boardService.viewBoard(bno);
+		model.addAttribute("boardVO",boardVO);
+		return "admin/board/board_update";
+	}
+	@RequestMapping(value = "/admin/board/update", method = RequestMethod.POST)
+	public String boardUpdate(BoardVO boardVO ,Locale locale, Model model, RedirectAttributes rdat) throws Exception {
+		boardService.updateBoard(boardVO);
+		rdat.addFlashAttribute("msg", "success");
+		return "redirect:/admin/board/view?bno="+boardVO.getBno();
+	}
 	
 	/**
 	 * 게시물관리 리스트 입니다.
@@ -37,6 +69,7 @@ public class AdminController {
 		model.addAttribute("boardList", list);
 		return "admin/board/board_list";
 	}
+	
 	/**
 	 * 회원관리 상세 입니다.
 	 * @throws Exception 
@@ -47,6 +80,7 @@ public class AdminController {
 		model.addAttribute("boardVO", boardVO);
 		return "admin/board/board_view";
 	}
+	
 	/**
 	 * 회원관리 리스트 입니다.
 	 * @throws Exception 
@@ -70,6 +104,7 @@ public class AdminController {
 		model.addAttribute("memberVO", memberVO);
 		return "admin/member/member_view";
 	}
+	
 	/**
 	 * 회원관리 > 등록 입니다.
 	 * @throws Exception 
@@ -80,7 +115,7 @@ public class AdminController {
 		return "admin/member/member_write";
 	}
 	/**
-	 * 회원관리 > 등록 입니다.
+	 * 회원관리 > 수정 입니다.
 	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/admin/member/write", method = RequestMethod.POST)
@@ -88,6 +123,27 @@ public class AdminController {
 		memberService.insertMember(memberVO);
 		return "redirect:/admin/member/list";
 	}
+	/**
+	 * 회원관리 > 수정 입니다.
+	 * @throws Exception 
+	 */
+	
+	@RequestMapping(value = "/admin/member/update", method = RequestMethod.GET)
+	public String memberUpdate(@RequestParam("user_id") String user_id, Locale locale, Model model) throws Exception {
+		MemberVO memberVO = memberService.viewMember(user_id);
+		model.addAttribute("memberVO", memberVO);
+		return "admin/member/member_update";
+	}
+	
+	
+	@RequestMapping(value = "/admin/member/update", method = RequestMethod.POST)
+	public String memberUpdate(MemberVO memberVO ,Locale locale, Model model , RedirectAttributes rdat) throws Exception {
+		memberService.updateMember(memberVO);
+		rdat.addFlashAttribute("msg", "success");
+		return "redirect:/admin/member/view?user_id=" + memberVO.getUser_id();
+	}
+	
+	
 	/**
 	 * 관리자 홈 입니다.
 	 */

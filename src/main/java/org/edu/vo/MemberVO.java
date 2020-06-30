@@ -1,7 +1,6 @@
 package org.edu.vo;
 
 import java.util.Date;
-//.
 public class MemberVO {
 	  private String user_id; 
 	  private String user_pw; 
@@ -69,7 +68,7 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", email=" + email
+		return "MemberVO [user_id= " + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", email=" + email
 				+ ", point=" + point + ", enabled=" + enabled + ", levels=" + levels + ", reg_date=" + reg_date
 				+ ", update_date=" + update_date + "]";
 	} 
