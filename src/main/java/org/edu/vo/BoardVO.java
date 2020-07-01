@@ -11,7 +11,7 @@ public class BoardVO {
 	private Date update_date;
 	private int view_count;
 	private int reply_count;
-	
+	private String[] files; //첨부파일용 변수
 	
 	public Integer getBno() {
 		return bno;
@@ -67,5 +67,11 @@ public class BoardVO {
 				+ "[bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", "
 				+ "regdate=" + regdate + ", update_date=" + update_date + ", "
 				+ "view_count=" + view_count + ", reply_count="+ reply_count + "]";
+	}
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
 	} 
 }

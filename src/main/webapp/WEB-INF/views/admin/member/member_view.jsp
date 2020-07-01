@@ -3,11 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../include/header.jsp"%>
 <!--  query> dao> service> controller -->
-<script>
-if('${msg}'  ==  "success"){
-	alert("수정에 성공하였습니다.!");
-	}
-</script>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -37,7 +33,7 @@ if('${msg}'  ==  "success"){
 				</div>
 				<!-- /.card-header -->
 				<div class="card-body">
-					<form role="form">
+					<form role="form" action="/admin/member/delete" method="post">
 						<div class="row">
 							<div class="col-sm-12">
 								<!-- text input -->
@@ -61,22 +57,24 @@ if('${msg}'  ==  "success"){
 							</div>
 
 							<div class="col-sm-12">
-								<!-- text input -->
 								<div class="form-group">
 									<label>point</label> <br> ${memberVO.point}
 								</div>
 							</div>
+
 							<div class="col-sm-12">
 								<div class="form-group">
 									<label>enabled</label> <br> ${memberVO.enabled}
 								</div>
 							</div>
+
 							<div class="col-sm-12">
 								<!-- text input -->
 								<div class="form-group">
 									<label>level</label> <br> ${memberVO.levels}
 								</div>
 							</div>
+
 							<div class="form-group"></div>
 							<div class="buttons">
 								<a href="/admin/member/update?user_id=${memberVO.user_id}" class="btn btn-warning">UPDATE</a>
@@ -85,7 +83,8 @@ if('${msg}'  ==  "success"){
 									ALL</a>
 							</div>
 						</div>
-
+					 
+					 <input type="hidden" name="user_id" value="${memberVO.user_id}" >
 					</form>
 				</div>
 				<!-- /.content-header -->

@@ -22,7 +22,17 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="org.edu.controller" />
-
 	<!-- 패키지 추가시 context 패키지경로명 -->
+	<!-- html폼에서 첨부파일 업로드 설정 10메가 제한 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+	<!-- 업로드한 파일이 저장 되는 위치: 운영서버에 올릴떈 /temp로 설정 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+	    <beans:constructor-arg value="C:\\egov\\workspace\\upload">
+	    </beans:constructor-arg>
+	</beans:bean>
 	
 </beans:beans>
+	

@@ -42,7 +42,7 @@
 									<div class="form-group">
 										<h3>UPDATE Board</h3>
 										<div class="form-group">
-											<label for="exampleTitle">Title</label> <input  value="{boardVO.title}" type="text"
+											<label for="exampleTitle">Title</label> <input  value="${boardVO.title}" type="text"
 												name="title" class="form-control" id="exampleTitle"
 												placeholder="Enter Title">
 										</div>
@@ -53,7 +53,7 @@
 										</div>
 										<div class="form-group">
 											<label for="exampleWriter">Writer</label> <input type="text"
-												value="{boardVO.writer}" name="writer" class="form-control" id="exampleWriter"
+												value="${boardVO.writer}" name="writer" class="form-control" id="exampleWriter"
 												placeholder="Enter Writer">
 										</div>
 										<div class="form-group">

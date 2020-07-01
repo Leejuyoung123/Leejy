@@ -18,7 +18,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AdminController {
-	
+	/* 
+	 *  웹에서 처리해야할 데이터를 받고 이 데이터를 담당할 서비스를 호출
+	 *  처리한 데이터는 다음페이지에서 볼수있게 셋팅 이동할페이지 리턴
+	 *  service 는 > dao vo 와  상호교환
+	 *  dao는 db에 테이블 컬럼값을 자바에서 객체로 다루기위해 사용	
+	 * https://melonpeach.tistory.com/16?category=806570												*/	
 	@Inject
 	private IF_BoardService boardService;
 	@Inject
@@ -35,8 +40,9 @@ public class AdminController {
 		return "admin/board/board_write";
 	}
 	@RequestMapping(value = "/admin/board/write", method = RequestMethod.POST)
-	public String boardWrite(BoardVO boardVO ,Locale locale, Model model) throws Exception {
+	public String boardWrite(BoardVO boardVO ,Locale locale,RedirectAttributes rdat) throws Exception {
 		boardService.insertBoard(boardVO);
+		rdat.addFlashAttribute("msg", "입력");
 		return "redirect:/admin/board/list";
 	}
 	/**
@@ -51,9 +57,9 @@ public class AdminController {
 		return "admin/board/board_update";
 	}
 	@RequestMapping(value = "/admin/board/update", method = RequestMethod.POST)
-	public String boardUpdate(BoardVO boardVO ,Locale locale, Model model, RedirectAttributes rdat) throws Exception {
+	public String boardUpdate(BoardVO boardVO ,Locale locale,  RedirectAttributes rdat) throws Exception {
 		boardService.updateBoard(boardVO);
-		rdat.addFlashAttribute("msg", "success");
+		rdat.addFlashAttribute("msg", "수정");
 		return "redirect:/admin/board/view?bno="+boardVO.getBno();
 	}
 	
@@ -80,6 +86,19 @@ public class AdminController {
 		model.addAttribute("boardVO", boardVO);
 		return "admin/board/board_view";
 	}
+	
+	/**
+	 * 회원관리 > 삭제 입니다.
+	 * @throws Exception 
+	 */
+	
+	@RequestMapping(value = "/admin/board/delete", method = RequestMethod.POST)
+	public String boardDelete(@RequestParam("bno")Integer bno ,Locale locale ,RedirectAttributes rdat) throws Exception {
+		boardService.deleteBoard(bno);
+		rdat.addFlashAttribute("msg", "삭제");
+		return "redirect:/admin/board/list";
+	}
+
 	
 	/**
 	 * 회원관리 리스트 입니다.
@@ -121,6 +140,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/member/write", method = RequestMethod.POST)
 	public String memberWrite(MemberVO memberVO, Locale locale,  RedirectAttributes rdat) throws Exception {
 		memberService.insertMember(memberVO);
+		rdat.addFlashAttribute("msg", "입력");
 		return "redirect:/admin/member/list";
 	}
 	/**
@@ -137,12 +157,22 @@ public class AdminController {
 	
 	
 	@RequestMapping(value = "/admin/member/update", method = RequestMethod.POST)
-	public String memberUpdate(MemberVO memberVO ,Locale locale, Model model , RedirectAttributes rdat) throws Exception {
+	public String memberUpdate(MemberVO memberVO ,Locale locale,  RedirectAttributes rdat) throws Exception {
 		memberService.updateMember(memberVO);
-		rdat.addFlashAttribute("msg", "success");
+		rdat.addFlashAttribute("msg", "수정");
 		return "redirect:/admin/member/view?user_id=" + memberVO.getUser_id();
 	}
+	/**
+	 * 회원관리 > 삭제 입니다.
+	 * @throws Exception 
+	 */
 	
+	@RequestMapping(value = "/admin/member/delete", method = RequestMethod.POST)
+	public String memberDelete(@RequestParam String user_id,Locale locale,RedirectAttributes rdat) throws Exception {
+		memberService.deleteMember(user_id);
+		rdat.addFlashAttribute("msg", "삭제");
+		return "redirect:/admin/member/list";
+	}
 	
 	/**
 	 * 관리자 홈 입니다.

@@ -17,6 +17,11 @@
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<script>
+if('${msg}'  !=  ""){
+	alert("${msg} 에 성공하였습니다.!");
+	}
+</script>
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
