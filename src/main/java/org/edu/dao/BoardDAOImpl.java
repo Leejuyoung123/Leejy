@@ -1,6 +1,8 @@
 package org.edu.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -57,5 +59,12 @@ public class BoardDAOImpl implements IF_BoardDAO {
 			sqlSession.delete(mapperQuery + ".deleteAttach", bno);
 	}
 
-	
+	@Override
+	public void updateAttach(String fullName, Integer bno) throws Exception {
+		Map<String , Object> paramMap = new HashMap<String ,Object>();
+		paramMap.put("bno", bno);
+		paramMap.put("fullName", fullName);
+		sqlSession.insert(mapperQuery+".updateAttach", paramMap);
+			
+	}
 }

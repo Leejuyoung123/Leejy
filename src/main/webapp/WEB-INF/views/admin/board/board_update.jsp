@@ -35,7 +35,7 @@
 					</div>
 					<!-- /.card-header -->
 					<div class="card-body">
-						<form role="form" action="/admin/board/update" method="post">
+						<form role="form" action="/admin/board/update" method="post" encType="multipart/form-data">
 							<div class="row">
 								<div class="col-sm-12">
 									<!-- text input -->
@@ -57,9 +57,7 @@
 												placeholder="Enter Writer">
 										</div>
 										<div class="form-group">
-											<label for="exampleFormControlFile1">아래 기존 파일 업로드 창
-												사용가능</label> <input type="file" class="form-control-file"
-												id="exampleFormControlFile1" VALUE="파일선택" name="file">
+										<td><input type="file" value="파일 선택" name="file" /></td>
 										</div>
 										
 									</div>
