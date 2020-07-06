@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.edu.vo.BoardVO;
+import org.edu.vo.PageVO;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,8 +26,8 @@ public class BoardDAOImpl implements IF_BoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> selectBoard() throws Exception {
-		return sqlSession.selectList(mapperQuery + ".selectBoard");
+	public List<BoardVO> selectBoard(PageVO pageVO) throws Exception {
+		return sqlSession.selectList(mapperQuery + ".selectBoard", pageVO);
 	}
 
 	@Override
@@ -66,5 +67,11 @@ public class BoardDAOImpl implements IF_BoardDAO {
 		paramMap.put("fullName", fullName);
 		sqlSession.insert(mapperQuery+".updateAttach", paramMap);
 			
+	}
+
+	@Override
+	public int countBno() throws Exception {
+		
+		return sqlSession.selectOne(mapperQuery + ".countBno");
 	}
 }

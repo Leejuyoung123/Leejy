@@ -23,6 +23,21 @@ class SnowTire extends Tire{
 public class HelloWorld {
 
 	public static void main(String[] args) {
+		//https://tmxhsk99.tistory.com/70
+		// (page:jsp클릭변수 - 1) * 10 perPageNum:페이지당 보여줄 개수;
+		int startBno = (1-1) * 10; // 1페이지
+		System.out.println("쿼리변수 (page:1page - 1) * 10 perPageNum:"+ startBno);
+		startBno = (2-1) * 10; // 2페이지
+		System.out.println("쿼리변수 (page:2page - 1) * 10 perPageNum:"+ startBno);
+		startBno = (3-1) * 10; // 3페이지
+		System.out.println("쿼리변수 (page:3page - 1) * 10 perPageNum:"+ startBno);
+		// 천장함수 사용법 1페이지 , 2페이지 ,3,페이지
+		int endpage= (int)(Math.ceil(1/10.0)*10);
+		System.out.println("Math.ceil(1/10.0)*10 :" + endpage);
+		endpage= (int)(Math.ceil(2/10.0)*10);
+		System.out.println("Math.ceil(2/10.0)*10 :" + endpage);
+		endpage= (int)(Math.ceil(3/10.0)*10);
+		System.out.println("Math.ceil(3/10.0)*10 :" + endpage);
 		List<String> files = new ArrayList<>();
 		files.add("sample1.jpg");
 		files.add("sample2.jpg");

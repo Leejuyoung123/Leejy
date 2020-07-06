@@ -94,7 +94,7 @@
 														varStatus="status">
 														<tr>
 															<th>${boardVO.bno}</th>
-															<th><a href="/admin/board/view?bno=${boardVO.bno}">${boardVO.title}</a></th>
+															<th><a href="/admin/board/view?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></th>
 															<th>${boardVO.writer}</th>
 															<th>${boardVO.regdate}</th>
 															<td class="right badge badge-danger">${boardVO.view_count }</td>
@@ -119,20 +119,26 @@
 						<a href="/admin/board/write" class="btn btn-primary">Create</a>
 						<nav aria-label="Page navigation example">
 							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								</a></li>
-								<li class="page-item"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-								</a></li>
+								
+								<c:if test="${pageVO.prev}">
+									<li class="page-item"><a class="page-link"
+										href="/admin/board/list?page=${pageVO.startPage -1}">이전</a></li>
+								</c:if>
+
+								<c:forEach begin="${pageVO.startPage}" end="${pageVO.endPage}" var="idx">
+									<li class='page-item <c:out value="${idx == pageVO.page?'active':''}"/>'>
+										<a class="page-link" href='/admin/board/list?page=${idx}'>${idx}</a>
+								</c:forEach>
+								
+								<c:if test= "${pageVO.next}">
+									<li class="page-item"><a class="page-link"
+										href="/admin/board/list?page=${pageVO.endPage +1}">다음</a></li>
+								</c:if>
+	
 							</ul>
 						</nav>
 						<!-- btn -->
 					</div>
-
 				</div>
 				<!-- card-secondry  -->
 			</div>
