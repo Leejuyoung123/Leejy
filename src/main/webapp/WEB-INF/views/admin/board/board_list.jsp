@@ -42,10 +42,12 @@
 											<br>
 											<hr>
 											<div>
-												<select name='LY'>
-													<option value=''>----</option>
-												</select> <input type="text"> <input type="submit" value="검색">
-												<input type="submit" value="새글쓰기">
+											<form action="/admin/board/list">
+												<select name="searchType">
+													<option value='all'>전체</option>
+												</select> 
+												<input type="text" name="searchKeyword"> <input type="button" value="검색">
+											</form>
 											</div>
 										</div>
 										<!-- form-group -->
@@ -92,11 +94,11 @@
 												<tbody>
 													<c:forEach items="${boardList}" var="boardVO"
 														varStatus="status">
-														<tr>
-															<th>${boardVO.bno}</th>
-															<th><a href="/admin/board/view?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></th>
-															<th>${boardVO.writer}</th>
-															<th>${boardVO.regdate}</th>
+														<tr> 
+															<td>${boardVO.bno}</td>
+															<td><a href="/admin/board/view?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></td>
+															<td>${boardVO.writer}</td>
+															<td>${boardVO.regdate}</td>
 															<td class="right badge badge-danger">${boardVO.view_count }</td>
 														</tr>
 													</c:forEach>
@@ -122,17 +124,17 @@
 								
 								<c:if test="${pageVO.prev}">
 									<li class="page-item"><a class="page-link"
-										href="/admin/board/list?page=${pageVO.startPage -1}">이전</a></li>
+										href="/admin/board/list?page=${pageVO.startPage -1}&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}">이전</a></li>
 								</c:if>
 
 								<c:forEach begin="${pageVO.startPage}" end="${pageVO.endPage}" var="idx">
 									<li class='page-item <c:out value="${idx == pageVO.page?'active':''}"/>'>
-										<a class="page-link" href='/admin/board/list?page=${idx}'>${idx}</a>
+										<a class="page-link" href='/admin/board/list?page=${idx}&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}'>${idx}</a>
 								</c:forEach>
 								
 								<c:if test= "${pageVO.next}">
 									<li class="page-item"><a class="page-link"
-										href="/admin/board/list?page=${pageVO.endPage +1}">다음</a></li>
+										href="/admin/board/list?page=${pageVO.endPage +1}&searchType=${pageVO.searchType}&searchKeyword=${pageVO.searchKeyword}">다음</a></li>
 								</c:if>
 	
 							</ul>

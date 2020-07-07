@@ -2,14 +2,15 @@ package org.edu.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.edu.service.IF_BoardService;
 import org.edu.service.IF_MemberService;
@@ -30,7 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AdminController {
-	/* 
+	/* 	https://doublesprogramming.tistory.com/category spring frame work 정리한사이트
 	 *  웹에서 처리해야할 데이터를 받고 이 데이터를 담당할 서비스를 호출
 	 *  처리한 데이터는 다음페이지에서 볼수있게 셋팅 이동할페이지 리턴
 	 *  service 는 > dao <> vo 와  상호<>
@@ -95,7 +96,7 @@ public class AdminController {
 			pageVO.setPage(1); // 초기 page 변수값 지정
 		}
 		pageVO.setPerPageNum(10);  // 1페이지당 보여줄 게시물 수 강제지정
-		pageVO.setTotalCount(boardService.countBno()); // 강제로 입력한 값을 쿼리를 동적으로 대체
+		pageVO.setTotalCount(boardService.countBno(pageVO)); // 강제로 입력한 값을 쿼리를 동적으로 대체
 		List<BoardVO> list = boardService.selectBoard(pageVO);
 		//모델클래스로 jsp화면으로 boardService에서 셀렉트한 list값을 boardList변수명으로 보낸다.
 		//model { list -> boardList -> jsp }
@@ -130,13 +131,14 @@ public class AdminController {
 	 * 게시물관리 > 등록 입니다.
 	 * @throws Exception 
 	 */
+	
 	@RequestMapping(value = "/admin/board/write", method = RequestMethod.GET)
 	public String boardWrite(Locale locale, Model model) throws Exception {
 		
 		return "admin/board/board_write";
 	}
 	@RequestMapping(value = "/admin/board/write", method = RequestMethod.POST)
-	public String boardWrite(MultipartFile file,BoardVO boardVO,Locale locale, RedirectAttributes rdat) throws Exception {
+	public String boardWrite(MultipartFile file,@Valid BoardVO boardVO,Locale locale, RedirectAttributes rdat) throws Exception {
 		//System.out.println("========첨부파일없이 저장===" + file.getOriginalFilename());
 		if(file.getOriginalFilename() == "") {
 			//첨부파일 없이 저장
@@ -162,7 +164,7 @@ public class AdminController {
 		return "admin/board/board_update";
 	}
 	@RequestMapping(value = "/admin/board/update", method = RequestMethod.POST)
-	public String boardUpdate(@ModelAttribute("pageVO")PageVO pageVO ,MultipartFile file,BoardVO boardVO,Locale locale, RedirectAttributes rdat) throws Exception {
+	public String boardUpdate(@ModelAttribute("pageVO")PageVO pageVO ,MultipartFile file,@Valid BoardVO boardVO,Locale locale, RedirectAttributes rdat) throws Exception {
 		if(file.getOriginalFilename() == "") {
 			boardService.updateBoard(boardVO);
 		}else{
@@ -275,6 +277,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/member/delete", method = RequestMethod.POST)
 	public String memberDelete(@RequestParam("user_id") String user_id, Locale locale, RedirectAttributes rdat) throws Exception {
 		memberService.deleteMember(user_id);
+		
 		rdat.addFlashAttribute("msg", "삭제");
 		return "redirect:/admin/member/list";
 	}

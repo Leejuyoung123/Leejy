@@ -10,7 +10,27 @@ public class PageVO {
 	private int startPage;
 	private boolean prev;
 	private boolean next;
+	// 검색용 변수 2개 추가
+	private String searchType;
+	private String searchKeyword;
+	//db get set 하기위해 만듬
+	
+	public String getSearchType() {
+		return searchType;
+	}
 
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	
 	private void calcPage() {
 		// page 변수는 현재 jsp에서 보내준 페이지 번호
 		int tempEnd = (int) (Math.ceil(page / 10.0) * 10);
@@ -31,7 +51,6 @@ public class PageVO {
 		// 현재 클릭한 페이지 번호로 계산된 게시물 수가
 		// 실제 게시물 개수보다 작다면 다음페이지가 있음 true
 	}
-
 	public int getTotalCount() {
 		return totalCount;
 	}

@@ -63,7 +63,7 @@ public class BoardServiceImpl implements IF_BoardService {
 	}
 
 	@Override
-	public int countBno() throws Exception {
-		return boardDAO.countBno();
+	public int countBno(PageVO pageVO) throws Exception {
+		return boardDAO.countBno(pageVO);
 	}
 }
