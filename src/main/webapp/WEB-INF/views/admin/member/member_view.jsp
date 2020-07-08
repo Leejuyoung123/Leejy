@@ -75,15 +75,17 @@
 								</div>
 							</div>
 
-							<div class="form-group"></div>
+							<div class="form-group">
 							<div class="buttons">
-								<a href="/admin/member/update?user_id=${memberVO.user_id}" class="btn btn-warning">UPDATE</a>
+								<a href="/admin/member/update?user_id=${memberVO.user_id}&page=${pageVO.page}" class="btn btn-warning">UPDATE</a>
 								<button type="submit" class="btn btn-danger">DELETE</button>
-								<a href="/admin/member/list" class="btn btn-primary">LIST
-									ALL</a>
+								<a href="/admin/member/list?page=${pageVO.page}" class="btn btn-primary">LIST ALL</a>
 							</div>
+							<!-- buttons -->
+							</div>
+							<!-- form-group -->
 						</div>
-					 
+					 <!--  row -->
 					 <input type="hidden" name="user_id" value="${memberVO.user_id}" >
 					</form>
 				</div>

@@ -93,7 +93,7 @@
 									<!-- //줄바꿈
              		// 수평선 -->
 									<button type="submit" class="btn btn-warning">Submit</button>
-									<a href="/admin/member/list" class="btn btn-primary">List
+									<a href="/admin/member/list?page=${pageVO.page}" class="btn btn-primary">List
 										All</a>
 								</div>
 								<!-- col -sm -12  -->

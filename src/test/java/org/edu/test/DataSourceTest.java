@@ -3,8 +3,11 @@ package org.edu.test;
 import javax.inject.Inject; //inject
 import javax.sql.DataSource; //ds
 import java.sql.Connection;
+import java.util.List;
+
 import org.edu.service.IF_MemberService; //service IF_MemberService 인터페이스 호출 현재 패키지는 org.edu.test
 import org.edu.vo.MemberVO;
+import org.edu.vo.PageVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -57,8 +60,13 @@ public class DataSourceTest {
 		@Test
 	public void testSelectMember() throws Exception {
 		System.out.println("회원 리스트 입니다");
-		memberService.selectMember();
-	
+		
+		PageVO pageVO =new PageVO();
+		pageVO.setPage(1);
+		pageVO.setPerPageNum(10);
+		memberService.selectMember(pageVO);
+		List<MemberVO> list = memberService.selectMember(pageVO);
+		System.out.println(list);
 		/*
 		 * List<MemberVO> list = memberService.selectMember();
 		 * for(MemberVO vo:list) { System.out.println("사용자 아이디"+ vo.getUser_id());
@@ -83,6 +91,5 @@ public class DataSourceTest {
 		public void testDeleteMember() throws Exception{
 		//memberVO를 사용하기위해 클래스변수를 생성
 		memberService.deleteMember("user02");
-		
 		}
 }

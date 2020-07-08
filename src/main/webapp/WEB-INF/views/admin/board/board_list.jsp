@@ -43,7 +43,7 @@
 											<br>
 											<hr>
 											<div>
-											<form action="/admin/board/list">
+											<form action="/admin/board/list" method="post">
 												<select name="searchType">
 													<option value='all'>전체</option>
 												</select> 
