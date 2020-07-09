@@ -47,8 +47,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="updateMember">
-		update tbl_member set
+		update tbl_member set 
+		<if test=" user_pw !='' ">
 		user_pw = #{user_pw},
+		</if>
 		user_name = #{user_name},
 		email = #{email},
 		point = #{point},
@@ -56,6 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		levels = #{levels},
 		update_date = now() 
 		where user_id = #{user_id}
+		
 	</update>
 	<delete id="deleteMember">
 		delete from tbl_member where user_id = #{user_id}

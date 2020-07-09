@@ -48,9 +48,9 @@
 								</div>
 								<div class="col-sm-12">
 									<div class="form-group">
-										<label>user_pw</label> <input value="${memberVO.user_pw}"
+										<label>user_pw</label> <input value=""
 											name="user_pw" type="text" class="form-control"
-											placeholder="Enter user_pw">
+											placeholder="${memberVO.user_pw}">
 									</div>
 								</div>
 							</div>
