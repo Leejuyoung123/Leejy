@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="include/header.jsp"%>    	
+    pageEncoding="UTF-8"%>
+<%@ include file="include/header.jsp" %>
 	<!-- Content Wrapper. Contains page content -->
 	<div id="container">
 	
@@ -35,8 +35,8 @@
                         <li class="seq butt0"><a href="#butt"><img src="/resources/home/img/btn_rollbutt_on.png" alt="1번" /></a></li>
                         <li class="seq butt1"><a href="#butt"><img src="/resources/home/img/btn_rollbutt_off.png" alt="2번" /></a></li>
                         <li class="seq butt2"><a href="#butt"><img src="/resources/home/img/btn_rollbutt_off.png" alt="3번" /></a></li>
-                        <li class="rollstop"><href="#" onclick="return false" class="stop"><img src="/resources/home/img/btn_roll_stop.png" alt="멈춤" /></a></li>
-                        <li class="rollplay"><href="#" onclick="return false" class="play"><img src="/resources/home/img/btn_roll_play.png" alt="재생" /></a></li>
+                        <li class="rollstop"><a href="#" class="stop"><img src="/resources/home/img/btn_roll_stop.png" alt="멈춤" /></a></li>
+                        <li class="rollplay"><a href="#" class="play"><img src="/resources/home/img/btn_roll_play.png" alt="재생" /></a></li>
                     </ul>
                 </div><!-- //rollbtnArea -->
 
@@ -68,19 +68,19 @@
 			<h2>OOOO OOOOO 스프링 <b>TOP 3</b></h2>
 			<div class="about_box">
 				<ul class="place_list box_inner clear">
-					<li><href="#" onclick="return false" onclick="$('.popup_base').css('height',$(document).height());$('.contact_pop').show();">
+					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.contact_pop').show();">
 							<img class="img_topplace" src="/resources/home/img/img_topplace01.jpg" alt="OOOO OOOOO" />
 							<h3>OOOO OOOOO</h3>
 							<p class="txt">OOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOO!</p>
 							<span class="view">VIEW</span></a>
 					</li>
-					<li><href="#" onclick="return false" onclick="$('.popup_base').css('height',$(document).height());$('.space_pop').show();">
+					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.space_pop').show();">
 							<img class="img_topplace" src="/resources/home/img/img_topplace02.jpg" alt="OOOO OOOOO" />
 							<h3>OOOO OOOOO</h3>
 							<p class="txt">OOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOO.</p>
 							<span class="view">VIEW</span></a>
 					</li>
-					<li><href="#" onclick="return false" onclick="$('.popup_base').css('height',$(document).height());$('.program_pop').show();">
+					<li><a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.program_pop').show();">
 							<img class="img_topplace" src="/resources/home/img/img_topplace03.jpg" alt="OOOO OOOOO" />
 							<h3>OOOO OOOOO</h3>
 							<p class="txt">OOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOOOOOO OOOOO</p>
@@ -114,5 +114,5 @@
 		<!-- //app_area -->
 		
 	</div>
-	<!-- Content Wrapper -->
-<%@ include file="include/footer.jsp"%>
+	<!-- //Content Wrapper -->
+<%@ include file="include/footer.jsp" %>

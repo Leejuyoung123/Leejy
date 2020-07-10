@@ -112,14 +112,6 @@ if('${msg}'  !=  ""){
 			</div>
 			<!-- /.sidebar -->
 		</aside>
-		<!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Control sidebar content goes here -->
-			<div class="p-3">
-				<h5>Title</h5>
-				<p>Sidebar content</p>
-				<button type="button" class="btn btn-primary btn-lg btn-block">로그아웃</button>
-			</div>
-		</aside>
+		
 </body>
 </html>

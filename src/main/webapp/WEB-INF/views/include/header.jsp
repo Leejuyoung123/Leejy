@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -30,16 +31,29 @@ if('${msg}'  !=  ""){
 </ul>
 <!-- wrap -->
 <div id="wrap">
+
 <header id="header">
 	<div class="header_area box_inner clear">	
 		<h1><a href="/">사용자 홈페이지</a></h1>
 		<p class="openMOgnb"><a href="#" onclick="return false"><b class="hdd">메뉴열기</b> <span></span><span></span><span></span></a></p>
 		<!-- header_cont -->
 		<div class="header_cont">
-			<ul class="util clear">
-				<li><a href="/login">로그인</a></li>
-				<li><a href="/admin">관리자</a></li>
-			</ul>	
+		<ul class="util clear">
+		<c:choose>
+			<c:when test="${session_enabled eq 'true' }">
+					<li><span style="color:white">${session_username}님[${session_userid}]환영합니다!</span></li>
+					<li><a href="/logout">로그아웃</a></li>
+					
+					<c:if test="${session_levels eq 'ROLE_ADMIN'}">
+						   <li><a href="/admin">관리자</a></li>		
+					</c:if>
+			</c:when>	
+			<c:otherwise>
+					<li><a href="/login">로그인</a></li>
+					<li><a href="#">회원가입</a></li>
+			</c:otherwise>	
+		</c:choose>
+		</ul>
 		<nav>
 			<ul class="gnb clear">
 				<li><a href="/sample" class="openAll1">포트폴리오</a>

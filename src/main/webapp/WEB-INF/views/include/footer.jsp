@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<footer>
+	<footer>
 		<div class="foot_area box_inner">
 			<ul class="foot_list clear">
 				<li><a href="/resources/home/javascript:;">이용약관</a></li>
@@ -51,7 +51,7 @@
 <!-- contact_pop -->
 <div class="popup_base contact_pop">
 	<div class="pop_content">
-		<p class="btn_xpop"><href="#" onclick="return false" onclick="$(this).parent().parent().parent().hide();">닫기</a></p>
+		<p class="btn_xpop"><a href="#" onclick="$(this).parent().parent().parent().hide();">닫기</a></p>
 		<ul class="pop_list">
 			<li>
 				<h2 class="tit_pop">OOOO OOOOO</h2>
@@ -66,7 +66,7 @@
 <!-- space_pop -->
 <div class="popup_base space_pop">
 	<div class="pop_content">
-		<p class="btn_xpop"><href="#" onclick="return false" onclick="$(this).parent().parent().parent().hide();">닫기</a></p>
+		<p class="btn_xpop"><a href="#" onclick="$(this).parent().parent().parent().hide();">닫기</a></p>
 		<ul class="pop_list">
 			<li>
 				<h2 class="tit_pop">OOOO OOOOO</h2>
@@ -86,7 +86,7 @@
 <!-- program_pop -->
 <div class="popup_base program_pop">
 	<div class="pop_content">
-		<p class="btn_xpop"><href="#" onclick="return false" onclick="$(this).parent().parent().parent().hide();">닫기</a></p>
+		<p class="btn_xpop"><a href="#" onclick="$(this).parent().parent().parent().hide();">닫기</a></p>
 		<ul class="pop_list">
 			<li>
 				<h2 class="tit_pop">OOOO OOOOO</h2>
@@ -97,5 +97,6 @@
 	</div>
 </div>
 <!-- //program_pop -->
+
 </body>
 </html>

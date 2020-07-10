@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+			<div class="p-3">
+				<h5>Title</h5>
+				<p>Sidebar content</p>
+				<a href="/logout" class="btn btn-primary btn-lg btn-block">로그아웃</a>
+			</div>
+		</aside>	
 <!-- Main Footer -->
 <footer class="main-footer">
 	<!-- To the right -->
