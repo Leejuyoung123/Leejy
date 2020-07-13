@@ -29,10 +29,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import org.edu.util.*;
 @Controller
 public class AdminController {
 	/*	https://doublesprogramming.tistory.com/category spring frame work 정리한사이트
+	 *  https://addio3305.tistory.com/83
 	 *  웹에서 처리해야할 데이터를 받고 이 데이터를 담당할 서비스를 호출
 	 *  처리한 데이터는 다음페이지에서 볼수있게 셋팅 이동할페이지 리턴
 	 *  service 는 > dao <> vo 와  상호<>
@@ -44,48 +45,8 @@ public class AdminController {
 	
 	@Inject
 	private IF_MemberService memberService;
-	//첨부파일 업로드 경로 변수값으로 가져옴 servlet-context.xml
-	@Resource(name="uploadPath")
-	private String uploadPath;
-	
-	/**
-	 * 게시물 상세보기에서 첨부파일 다운로드 메서드 구현
-	 */
-	@RequestMapping(value="/download", method=RequestMethod.GET)
-	@ResponseBody
-	public FileSystemResource fileDownload(@RequestParam("filename") String fileName, HttpServletResponse response) {
-		File file = new File(uploadPath + "/" + fileName);
-		response.setContentType("application/download; utf-8");
-		response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
-		return new FileSystemResource(file);
-	}
-	/**
-	 * 파일 업로드 메서드(공통)
-	 * @throws IOException 
-	 */
-	public String[] fileUpload(MultipartFile file) throws IOException {
-		String originalName = file.getOriginalFilename();//jsp에서 전송받은 파일의 이름 가져옴
-		UUID uid = UUID.randomUUID();//랜덤문자 구하기
-		String saveName = uid.toString() + "." + originalName.split("\\.")[1];//한글 파일명 처리 때문에...
-		String[] files = new String[] {saveName};//형변환
-		byte[] fileData = file.getBytes();
-		File target = new File(uploadPath, saveName);
-		FileCopyUtils.copy(fileData, target);
-		return files;
-		/*      
-		한글 파일명 처리 떄문에 
-		img[] images.jsp (.) 을기준으로해서 분리 
-		img[1] images 
-		img[2] jpg  확장자
-		.을 분리하려면 "\\." 
-		== FilecopyUtils.copy ==
-		파일 전송 순서
-		1.JSP 게시판 입력폼 첨부파일을 포함 입력버튼 클릭
-		2.서버로 전송 /tmp 폴더 이동
-		3.copy 명령어가 실행되면 서버에 /tmp 내용이 c:/egov/workspace/upload 폴더 저장.
-		 */
-
-	}
+	@Inject
+	private FileDataUtil fileDataUtil;
 	
 	/**
 	 * 게시물관리 리스트 입니다.
@@ -145,7 +106,7 @@ public class AdminController {
 			//첨부파일 없이 저장
 			boardService.insertBoard(boardVO);
 		}else {
-			String[] files = fileUpload(file);
+			String[] files = fileDataUtil.fileUpload(file);
 			boardVO.setFiles(files);
 			boardService.insertBoard(boardVO);			
 		}
@@ -153,6 +114,7 @@ public class AdminController {
 		return "redirect:/admin/board/list";
 	}
 	
+
 	/**
 	 * 게시물관리 > 수정 입니다.
 	 * @throws Exception 
@@ -173,13 +135,13 @@ public class AdminController {
 			List<String> delFiles = boardService.selectAttach(boardVO.getBno());
 			for(String fileName : delFiles) {
 				//실제파일 삭제
-				File target = new File(uploadPath, fileName);
+				File target = new File(fileDataUtil.getUploadPath(), fileName);
 				if(target.exists()) { //조건:해당경로에 파일명이 존재하면
 					target.delete();  //파일삭제
 				}//End if
 			}//End for
 			//아래 신규파일 업로드
-			String[] files = fileUpload(file);//실제파일업로드후 파일명 리턴
+			String[] files =fileDataUtil.fileUpload(file);//실제파일업로드후 파일명 리턴
 			boardVO.setFiles(files);//데이터베이스 <-> VO(get,set) <-> DAO클래스
 			boardService.updateBoard(boardVO);
 		}//End if
@@ -202,7 +164,7 @@ public class AdminController {
 		//첨부파일 삭제(아래)
 		for(String fileName : files) {
 			//삭제 명령문 추가(아래)
-			File target = new File(uploadPath, fileName);
+			File target = new File(fileDataUtil.getUploadPath(), fileName);
 			if(target.exists()) {
 				target.delete();
 			}
