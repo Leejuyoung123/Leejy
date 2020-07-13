@@ -39,7 +39,7 @@
 			</li>
 			<c:set var="extName" value="${fn:split(boardVO.files[0],'.')}" />
 			<c:set var="ext" value="${extName[fn:length(extName)-1]}" />
-			<c:if test="${ext  eq 'jpg'}">
+			<c:if test="${ext  eq 'jpg'}">+
 				<img src="/download?filename=${boardVO.files[0]}" title="첨부 파일 이미지">
 			</c:if>
 		</ul>
