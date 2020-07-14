@@ -34,10 +34,10 @@
 	    </beans:constructor-arg>
 	</beans:bean>
 	-->
-		<!-- 업로드한 파일이 저장되는 위치: 로컬 헤로쿠용 경로 -->
+		<!-- 업로드한 파일이 저장되는 위치: 로컬 헤로쿠용 경로-->
 	<beans:bean id="uploadPath" class="java.lang.String">
 	    <beans:constructor-arg value="/tmp">
 	    </beans:constructor-arg>
 	</beans:bean>
-	 
+	  
 </beans:beans>
