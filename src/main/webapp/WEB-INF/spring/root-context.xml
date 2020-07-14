@@ -22,7 +22,7 @@
 	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
 	<property name="url"
-		value="jdbc:hsqldb:file:c:/egov/workspace/embeded/edu.db" />
+		value="jdbc:hsqldb:file:/tmp/embeded/edu.db" />
 	<property name="username" value="sa" />
 	<property name="password" value="" />
 	</bean>

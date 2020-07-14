@@ -39,8 +39,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${boardList}" var="boardVO"
-					varStatus="status">
+					<c:forEach items="${boardList}" var="boardVO" varStatus="status">
 					<tr> 
 						<td>${boardVO.bno}</td>
 						<td><a href="/board/view?bno=${boardVO.bno}&page=${pageVO.page}">${boardVO.title}</a></td>

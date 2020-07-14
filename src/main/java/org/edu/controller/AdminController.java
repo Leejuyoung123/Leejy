@@ -34,6 +34,7 @@ import org.edu.util.*;
 public class AdminController {
 	/*	https://doublesprogramming.tistory.com/category spring frame work 정리한사이트
 	 *  https://addio3305.tistory.com/83
+	 *  https://kuzuro.blogspot.com/p/shopping-mall.html 쇼핑몰
 	 *  웹에서 처리해야할 데이터를 받고 이 데이터를 담당할 서비스를 호출
 	 *  처리한 데이터는 다음페이지에서 볼수있게 셋팅 이동할페이지 리턴
 	 *  service 는 > dao <> vo 와  상호<>
