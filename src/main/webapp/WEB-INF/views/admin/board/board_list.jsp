@@ -43,7 +43,7 @@
 											<br>
 											<hr>
 											<div>
-											<form action="/admin/board/list" method="post">
+											<form action="/admin/board/list" >
 												<select name="searchType">
 													<option value='all'>전체</option>
 												</select> 
@@ -75,7 +75,6 @@
 					<div class="card">
 						<!-- /.card-header -->
 						<div class="card-body">
-							<form role="form">
 								<div class="row">
 									<div class="col-sm-12">
 										<!-- text input -->
@@ -111,8 +110,6 @@
 									<!-- col sm-12 -->
 								</div>
 								<!-- row -->
-							</form>
-							<!-- form -->
 						</div>
 						<!-- card body -->
 					</div>

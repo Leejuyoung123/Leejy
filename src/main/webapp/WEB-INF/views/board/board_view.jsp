@@ -48,6 +48,10 @@
 			</c:if>
 		</ul>
 		<p class="btn_line txt_right">
+			<c:if test="${session_enabled}">
+			<a href="javascript:;" id="deleteBno" class="btn_bbs">삭제</a>
+			<a href="/board/update?page=${pageVO.page}&bno=${boardVO.bno}" class="btn_bbs">수정</a>
+			</c:if>
 			<a href="/board/list?page=${pageVO.page}" class="btn_bbs">목록</a>
 		</p>
 	</div>
@@ -55,5 +59,24 @@
 
 </div>
 <!-- //container -->
-
+<form  id="deleteForm">
+	<input name="bno" id="bno" type="hidden" value="${boardVO.bno}">
+</form>
+<!-- 삭제를 누르면 폼안에있는 값을 저장할 변수에 담아 기능을 구현 deleteBno = id 
+("#id");-->
+<script> 
+$(document).ready(function(){
+	$("#deleteBno").bind("click",function(){
+		if(confirm("정말 삭제 하시겠습니까?")){
+			var formObj = $("#deleteForm");
+			formObj.attr("action","/board/delete");
+			formObj.attr("method","post");
+			formObj.submit();
+			// 디버그용 alert($("#bno").val());
+		}else{
+			return false; 
+		}
+	})
+});
+</script>
 <%@ include file="../include/footer.jsp"%>

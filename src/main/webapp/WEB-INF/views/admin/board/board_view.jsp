@@ -132,8 +132,6 @@
 								<!-- END timeline item -->
 							</div>
 						</div>
-						
-						</form>
 					</div>
 
 					<td>

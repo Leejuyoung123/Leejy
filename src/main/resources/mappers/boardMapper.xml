@@ -82,5 +82,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateAttach">
 	insert into tbl_attach(full_name, bno) values (#{fullName}, #{bno})
 	</update>
-	
+	<update id="updateViewCount">
+	update tbl_board set
+	view_count = view_count + 1
+	where bno = #{bno}
+	</update>
 </mapper>

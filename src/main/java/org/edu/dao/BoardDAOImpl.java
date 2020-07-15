@@ -53,7 +53,7 @@ public class BoardDAOImpl implements IF_BoardDAO {
 	@Override
 	public List<String> selectAttach(Integer bno) throws Exception {
 		return sqlSession.selectList(mapperQuery + ".selectAttach", bno);
-	}
+		}
 
 	@Override
 	public void deleteAttach(Integer bno) throws Exception {
@@ -73,6 +73,11 @@ public class BoardDAOImpl implements IF_BoardDAO {
 	public int countBno(PageVO pageVO) throws Exception {
 		
 		return sqlSession.selectOne(mapperQuery + ".countBno",pageVO);
+	}
+
+	@Override
+	public void updateViewCount(Integer bno) throws Exception {
+		sqlSession.selectOne(mapperQuery + ".updateViewCount" , bno);
 	}
 
 }
