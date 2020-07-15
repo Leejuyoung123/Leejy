@@ -72,7 +72,7 @@ $(document).ready(function(){
 			formObj.attr("action","/board/delete");
 			formObj.attr("method","post");
 			formObj.submit();
-			// 디버그용 alert($("#bno").val());
+			// 디버그용 alert($("#bno").val());.
 		}else{
 			return false; 
 		}
