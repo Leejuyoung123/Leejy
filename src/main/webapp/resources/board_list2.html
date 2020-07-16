@@ -285,11 +285,14 @@ function  myFunc() { // function 함수이름() {}
 myFunc();
 $(document).ready(function() {
 	alert('테스트2');
+	$(".even_table tbody tr:even").css({"background-color":'black', "color":'white'});
 	var cnt=131;	
 	$(".btn-primary").bind("click",function(event){
-		
-	$("<tr><td>"+cnt+"</td><td>한줄추가</td><td>내용추가</td><td>2020.07.15</td><td>100</td>").prependTo("table"); 
-		cnt = cnt+1;
+		$(".even_table tbody tr").each(function(index,item){
+			$(item).addClass("hong" + index); //class="hong_0,hong_1"	
+		})
+		//$("<tr><td>"+cnt+"</td><td>한줄추가</td><td>내용추가</td><td>2020.07.15</td><td>100</td>").prependTo("table"); 
+		//cnt = cnt+1;
 	});
 	// apendTo 밑에 한줄추가 <> prependTo 위에 한줄추가
 	//$("table thead tr").css({"background-color":"red"});  
