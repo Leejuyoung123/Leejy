@@ -75,6 +75,7 @@ $(document).ready(function(){
 			// 디버그용 alert($("#bno").val());.
 		}else{
 			return false; 
+			
 		}
 	})
 });

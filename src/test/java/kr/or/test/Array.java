@@ -2,7 +2,17 @@ package kr.or.test;
 
 public class Array {
 	// 값의 리스트 배열생성
-	 public static int add(int[] scores) { 
+	private int speed;
+	
+	 public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
+
+	public static int add(int[] scores) { 
 		 int sum1=0;
 		 for(int i=0; i<3; i++) {
 			 sum1 = sum1+scores[i];
@@ -34,7 +44,7 @@ public class Array {
 	  	  //{ 15, 30 ,45} 중괄호에는 값을 나중에 지정해주면됨
 	  System.out.println( lisk[2]);	  
 */	  
-	// 값의 리스트 배열생성
+	 // 값의 리스트 배열생성
 	 int [] scores;
 	 scores = new int[] {20,40,60};
 	 int sum1= 0;
