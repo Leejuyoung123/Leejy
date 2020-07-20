@@ -93,19 +93,20 @@
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>Writer</label> <input id="replyerInput" type="text" class="form-control"
-												placeholder="USER ID">
+											<label>Writer</label> <input id="replyerInput" type="text"
+												class="form-control" placeholder="USER ID">
 										</div>
 									</div>
 
 									<div class="col-sm-12">
 										<!-- text input -->
 										<div class="form-group">
-											<label>Reply Text</label> <input id="replytextInput" type="text"
-												class="form-control" placeholder="REPLY TEXT">
+											<label>Reply Text</label> <input id="replytextInput"
+												type="text" class="form-control" placeholder="REPLY TEXT">
 										</div>
 									</div>
-									<a href="javascript:;" id="insertApplyBtn" class="btn btn-info">ADD REPLY</a>
+									<a href="javascript:;" id="insertApplyBtn" class="btn btn-info">ADD
+										REPLY</a>
 								</div>
 
 							</form>
@@ -117,130 +118,196 @@
 							<div class="timeline">
 								<!-- timeline time label -->
 								<div class="time-label" id="replyDiv">
-									<span class="bg-green" >Replies List[1]</span>
+									<span class="bg-green">Replies List[1]</span>
 								</div>
 								<!-- /.timeline-label -->
-								<!-- 댓글 리스트 반복문용 jquery 라이브러리 == jstl의 for each와 같은역할 -->
-								<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+								<!-- 댓글 리스트 반복문용 JQuery라이브러리 == jstl의 forEach같은 역할 -->
+								<script
+									src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 								<script id="template" type="text/x-handlebars-template">
-								{{#each .}}
-								<div class="replyLi" data-rno={{rno}}>
-									<i class="fas fa-comments bg-blue"></i>
-									<div class="timeline-item">
-										<h3 class="timeline-header">
-											<a href="#">{{rno}}-{{replyer}}</a>
-										</h3>
-										<div class="timeline-body">{{replytext}}</div>
-										<div class="timeline-footer">
-											<a class="btn btn-primary btn-sm" data-toggle="modal"data-target="#modifyModal">Modify</a>
-										</div>
-									</div>
-								</div>
-				
-								{{/each}}	
-								</script>
-								<script>
-								//댓글 변수 + 함수 초기화
-							     var bno = ${boardVO.bno};
-							     // replyArr= JSON 배열 데이터 , target = 출력할위치 , teplateObject 
-							     var printData = function(replyArr, target, templateObject){
-							     var template = Handlebars.compile(templateObject.html()); 
-							     var html = template(replyArr);
-							     $(".replyLi").remove();
-							     target.after(html);
-							     }
-							     function getPage(pageInfo){
-							        $.getJSON(pageInfo, function(data){
-										printData(data,$("#replyDiv"),$('#template'));								        	
-							        	//$("modifyModal").modal('hide');
-							        	
-							        }); 	 
-							     }
-							     //여기까지는 변수+함수 정의하고, 실제 사용은 아래부터 실행
-							     //댓글 리스트 출력 실행
-								$(document).ready(function(){
-							    	 getPage("/reply/select/"+bno);
-							     });
-							     </script>
-							     
+										{{#each .}}
+											<div class="replyLi" data-rno={{rno}}>
+												<i class="fas fa-comments bg-blue"></i>
+												<div class="timeline-item">
+													<h3 class="timeline-header">{{replyer}}</h3>
+													<div class="timeline-body">{{replytext}}</div>
+													<div class="timeline-footer">
+														<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modifyModal">Modify</a>
+													</div>
+												</div>
+											</div>
+										{{/each}}
+										</script>
+										<script>
+											//댓글 변수+함수 초기화
+											var bno = ${boardVO.bno};
+											var page = 1; //페이징 변수 초기값
+											//replyArr=Json배열데이터, 파싱 ,target=출력위치, template~=반복구문
+											var printReplyList = function(replyArr, target, templateObject){
+												var template = Handlebars.compile(templateObject.html());
+												var html = template(replyArr);
+												$(".replyLi").remove();
+												target.after(html);
+											}
+											
+											//  pageVO 파싱하는 함수(아래)
+											var printPageVO = function(pageVO,target) {
+												var paging = "";
+												for(var cnt=pageVO.startPage; cnt<=(pageVO.endPage); cnt++){
+												var active = cnt == (pageVO.page)?"active":"";	
+												paging = paging +'<li class="page-item '+active+' "><a class="page-link" href="'+cnt+'">'+cnt+'</a></li>';
+											}
+												target.html(paging);	
+											}
+											
+											function getPage(pageInfo) {
+												$.getJSON(pageInfo, function(data){
+													 //alert(pageInfo); //디버그
+													printReplyList(data.replyList, $("#replyDiv"), $("#template"));
+													printPageVO(data.pageVO,$(".pagination"));             
+													$("#modifyModal").modal('hide'); // 수정 , 삭제시 모달창 숨기기
+												});
+											}
+											//여기까지는 변수+함수 정의하고, 실제 사용은 아래부터 실행
+								 			//댓글 리스트 출력실행
+											$(document).ready(function(){
+												getPage("/reply/select/" + bno + "/" + page);
+												// 페이징 번호 클릭시  페이지 이동이 아니고 getPage 함수 실행이 되야함
+												$(".pagination").on("click","li a", function(event){
+													event.preventDefault(); // 기본 a href 이동 이벤트를 금지 
+													page = $(this).attr("href"); // 페이지 번호 1,2,3,....
+													getPage("/reply/select/"+bno+"/"+page);
+													
+												});
+											});
+										</script>
+
 								<!-- timeline item -->
-								<!-- 더미데이터 댓글리스트 <div>
-									<i class="fas fa-comments bg-blue"></i>
-									<div class="timeline-item">
-										<h3 class="timeline-header">
-											<a href="#">26-test</a>
-										</h3>
-										<div class="timeline-body">댓글 테스트입니다.</div>
-										<div class="timeline-footer">
-											<a class="btn btn-primary btn-sm">Modify</a>
-										</div>
-									</div>
-								</div> -->
+								<!-- <div>
+											<i class="fas fa-comments bg-blue"></i>
+											<div class="timeline-item">
+												<h3 class="timeline-header">
+													<a href="#">26-test</a> 												</h3>
+												<div class="timeline-body">댓글 테스트입니다.</div>
+												<div class="timeline-footer">
+													<a class="btn btn-primary btn-sm">Modify</a>
+												</div>
+											</div>
+										</div> -->
 								<!-- END timeline item -->
 							</div>
 						</div>
 					</div>
 					<script>
-					$(document).ready(function(){
-						$("#insertApplyBtn").bind("click",function(){
-							var replyer = $("#replyerInput").val();
-							var replytext = $("#replytextInput").val();
-							$.ajax({
-								type:'post',
-								url :'/reply/insert',
-								headers: {
-									"Content-Type":"application/json",
-									"X-HTTP-Method-Override":"POST"
-									},
-									dataType:'text',
-									data:JSON.stringify({
-									   bno:bno,
-										replyer:replyer,
-										replytext:replytext
-									}),
-										success:function(result){
-											if(result == 'SUCCESS'){
-												alert("등록되었습니다.");
-												getPage("/reply/select/"+bno);
-												$("replyerInput").val("");
-												$("replytextInput").val("");
-											}//if
+							$(document).ready(function() {
+								/* 삭제 */
+								$("#replyDelBtn").on("click", function() {
+									var rno = $("#rno").val();
+									$.ajax({
+										type : 'delete',
+										url : '/reply/delete/' + rno,
+										headers : {
+											"Content-Type" : "application/json",
+											"X-HTTP-Method-Override" : "DELETE"
+										},
+										success : function(result) {
+											if (result == 'SUCCESS') {
+												alert("삭제 되었습니다.");
+												getPage("/reply/select/" + bno+"/"+page);
+											}
 										}
 									});
 								});
+								/* 수정 */
+								$("#replyModBtn").on("click", function() {
+									var replytext = $("#replytext").val();
+									var rno = $("#rno").val();
+									//alert(replytext+rno);
+									//alert(replytext);//디버그: 입력값 확인용
+									//return false;//디버그: 여기까지 실행 끝내는 명령
+									$.ajax({
+										type : 'put',
+										url : '/reply/update/' + rno,
+										headers : {
+											"Content-Type" : "application/json",
+											"X-HTTP-Method-Override" : "PUT"
+										},
+										dataType : 'text',
+										data : JSON.stringify({
+											replytext : replytext
+										}),
+										success : function(result) {
+											if (result == 'SUCCESS') {
+												alert("수정 되었습니다.");
+												getPage("/reply/select/" +  bno+"/"+page);
+											}
+										}
+									});
+								});
+								/* 입력 */
+								$("#insertApplyBtn").on("click", function() {
+									var replyer = $("#replyerInput").val();
+									var replytext = $("#replytextInput").val();
+									$.ajax({
+										type : 'post',
+										url : '/reply/insert',
+										headers : {
+											"Content-Type" : "application/json",
+											"X-HTTP-Method-Override" : "POST"
+										},
+										dataType : 'text',
+										data : JSON.stringify({
+											bno : bno,
+											replyer : replyer,
+											replytext : replytext
+										}),
+										success : function(result) {
+											if (result == 'SUCCESS') {
+												alert("등록 되었습니다.");
+												getPage("/reply/select/" +  bno+"/"+ page);
+												$("#replyerInput").val("");
+												$("#replytextInput").val("");
+									}
+								}
 							});
-					</script>
-					<script>
-					$(document).ready(function(){
-						//선택한 댓글 모달창에 바인딩.
-						$(".timeline").on("click",".replyLi",function(event){
-							var reply = $(this);
-							$("#replytext").val(reply.find('.timeline-body').text());
-							$(".modal-title").html(reply.attr("data-rno"));
 						});
 					});
-					</script>
-					<div id="modifyModal" class="modal modal-primary fade" role="dialog">
-								    <div class="modal-dialog">
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									      	<div class="modal-header" style="display:block;">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title"></h4>
-									     	</div>
-									        <div class="modal-body" data-rno>
-										<p><input type="text" id="replytext" class="form-control"></p>
-									     	</div>
-									      	<div class="modal-footer">
-										<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
-										<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									      	</div>
-									    </div>
-									 </div>
-								  </div>
-					
-						
+				</script>
+					<div id="modifyModal" class="modal modal-primary fade"
+						role="dialog">
+						<div class="modal-dialog">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header" style="display: block;">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title"></h4>
+								</div>
+								<div class="modal-body" data-rno>
+									<input type="hidden" id="rno" class="form-control">
+									<p>
+										<input type="text" id="replytext" class="form-control">
+									</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
+									<button type="button" class="btn btn-danger" id="replyDelBtn">DELETE</button>
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+							$(document).ready(function(){
+								//선택한 댓글(template:빵틀)의 데이터를 모달창의 id,클래스에 데이터 바인딩
+								$(".timeline").on("click", ".replyLi", function(event) {
+									var reply = $(this);
+									$("#rno").val(reply.attr("data-rno")); // input type val
+									$(".modal-title").html(reply.find(".timeline-header").text()); // html <> <p><h> type 
+									$("#replytext").val(reply.find(".timeline-body").text());
+								});
+							});
+							</script>
 					<td>
 						<nav aria-label="Contacts Page Navigation">
 							<ul class="pagination justify-content-center m-0">

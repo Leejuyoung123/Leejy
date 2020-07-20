@@ -223,6 +223,7 @@
 		 <artifactId>spring-security-taglibs</artifactId>
 		 <version>${spring.security.version}</version>
 		</dependency>
+		<!-- jackson 추가  -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>

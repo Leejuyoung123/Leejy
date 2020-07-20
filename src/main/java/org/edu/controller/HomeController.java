@@ -31,8 +31,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-   /*home 74line
+	/*
+	 orcl jdbc 연동
+	 https://m.blog.naver.com/PostView.nhn?blogId=pyj721aa&logNo=221147393750&proxyReferer=https:%2F%2Fwww.google.com%2F
+*/   
+	/*home 74line
  	*<a href="#" onclick="$('.popup_base').css('height',$(document).height());$('.contact_pop').show();">
  	*RestFull 방식
  	*@RestController 스프링 (서버단)

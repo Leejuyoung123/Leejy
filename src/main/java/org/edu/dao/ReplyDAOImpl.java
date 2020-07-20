@@ -1,10 +1,13 @@
 package org.edu.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.edu.vo.PageVO;
 import org.edu.vo.ReplyVO;
 import org.springframework.stereotype.Repository;
 @Repository
@@ -14,8 +17,11 @@ public class ReplyDAOImpl implements IF_ReplyDAO{
 	private SqlSession sqlSession; //마이바티스 사용변수 추가
 	
 	@Override
-	public List<ReplyVO> selectReply(Integer bno) throws Exception {
-		return sqlSession.selectList(mapperQuery + ".selectReply" , bno);
+	public List<ReplyVO> selectReply(Integer bno , PageVO pageVO) throws Exception {
+		 Map<String,Object> paramMap = new HashMap<String,Object>(); 
+		 paramMap.put("bno", bno);
+		 paramMap.put("pageVO", pageVO);
+		 return sqlSession.selectList(mapperQuery + ".selectReply" , paramMap);
 	}
 
 	@Override
@@ -29,8 +35,12 @@ public class ReplyDAOImpl implements IF_ReplyDAO{
 	}
 
 	@Override
-	public void deleteREply(Integer rno) throws Exception {
+	public void deleteReply(Integer rno) throws Exception {
 		sqlSession.delete(mapperQuery + ".deleteReply",rno);
 	}
 
+	@Override
+	public int countRno(Integer bno) throws Exception {
+		return sqlSession.selectOne(mapperQuery +".countRno",bno);
+	}
 }

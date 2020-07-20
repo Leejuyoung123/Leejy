@@ -17,6 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectReply" resultType="org.edu.vo.ReplyVO">
 		select * from tbl_reply where bno = #{bno} 
 		order by regdate desc
+		limit #{pageVO.startNo},#{pageVO.perPageNum}
+	</select>
+	<!-- 댓글 넘버 총댓글 개수 -->
+	<select id="countRno" resultType="int">
+		select count(*) from tbl_reply where bno= #{bno}
 	</select>
 	<insert id="insertReply">
 		insert into tbl_reply (
