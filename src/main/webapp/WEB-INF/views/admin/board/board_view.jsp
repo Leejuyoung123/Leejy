@@ -153,6 +153,9 @@
 											//  pageVO 파싱하는 함수(아래)
 											var printPageVO = function(pageVO,target) {
 												var paging = "";
+												if(pageVO.prev){
+													paging = paging +'<li class="page-item "><a class="page-link" href="'+pageVO.startPage-1+'">이전</a></li>';
+												}
 												for(var cnt=pageVO.startPage; cnt<=(pageVO.endPage); cnt++){
 												var active = cnt == (pageVO.page)?"active":"";	
 												paging = paging +'<li class="page-item '+active+' "><a class="page-link" href="'+cnt+'">'+cnt+'</a></li>';
