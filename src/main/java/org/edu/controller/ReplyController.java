@@ -88,7 +88,7 @@ import org.springframework.web.bind.annotation.RestController;
 		ResponseEntity<Map<String,Object>> entity = null;
 		PageVO pageVO = new PageVO();
 		pageVO.setPage(page);
-		pageVO.setPerPageNum(10);
+		pageVO.setPerPageNum(5);
 		pageVO.setTotalCount(replyService.countRno(bno));
 		//replyVO list (댓글 리스트), pageVO (페이지 번호) 클래스형 변수
 		//Map > HashMap
