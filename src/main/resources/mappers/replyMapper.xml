@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into tbl_reply (
 		bno,replytext,replyer,regdate )
 		values(
-		#{bno} ,#{replytext},#{replytext},now() )
+		#{bno},#{replytext},#{replyer},now() )
 	</insert>
 	<update id="updateReply">
 		update tbl_reply set 

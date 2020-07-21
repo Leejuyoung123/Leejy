@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import org.edu.vo.MemberVO;
 import org.edu.vo.PageVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,13 +52,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
        >public String boardList 메서드 -> return "board/board_list";
 	   >기존 model.addAttribute("boardList".list); 담아서 board_list.jsp 이동
        
-       >(JSON 변환 public ResponseEntity<List<boardVO>>)  = return
-       >entity = new ResponseEntity<>(service.selectReplies(bno)
+       >(JSON 변환 public ResponseEntity<Map<String,Object>>)  = return
+       entity = new ResponseEntity<Map<String,Object>>(resultMap,HttpStatus.OK);
        >댓글 호출한 페이지에 JSON데이터가 변형되서 jsp로 전송함
        BoardVO boardVO -> (기존 매개변수)
        @RequestBody BoardVO boardVO (jsp 에서 값을 controller 전송할떄) 
        @controller 는 view를 리턴 / 
-       @Restcontroller는 json/xml형식으로 응답 객체  ( 데이터만 리턴)
+       @Restcontroller는 json/xml형식으로 
+       
+       응답 객체  ( 데이터만 리턴)
      */
 
 /**

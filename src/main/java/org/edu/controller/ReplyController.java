@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-/* -리 프레젠테이션 (재가공)*/
+/* -리 프레젠테이션 (재가공)
+ * Rest Full (api) 서비스 세트 : 
+ * Representation 빅데이터 받아서 재가공(파싱)해서 jsp 출력*/
 
 /**
  * REST API 서비스 (댓글 서비스) == Rest full 서비스
