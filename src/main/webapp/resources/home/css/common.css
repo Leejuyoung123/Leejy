@@ -389,7 +389,7 @@ h1.loginTit a img {width:100%;}
 
 	.box_inner {width:100%;}
 
-	header {height:90px; text-align:center; z-index:200; background:rgba(0,20,85,0.5);}
+	header {height:90px; text-align:center; z-index:200; background:rgba(0,20,85,1);}
 	header.on {background:#31353d;}
 	header .header_area h1 {float:none; width:100%; height:50px; text-align:center; padding:3px 0 0;}
 	header .header_area h1 a {display:inline-block; 

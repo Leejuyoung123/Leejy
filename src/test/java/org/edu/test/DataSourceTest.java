@@ -40,10 +40,10 @@ public class DataSourceTest {
 		public void testInsertMember() throws Exception{
 		//memberVO를 사용하기위해 클래스변수를 생성
 		MemberVO memberVO = new MemberVO();
-		memberVO.setUser_id("LeeJy");
+		memberVO.setUser_id("Lee2Jy");
 		memberVO.setUser_pw("1234");
-		memberVO.setUser_name("이주영");
-		memberVO.setEmail("Leejy@test.com");
+		memberVO.setUser_name("이주2영");
+		memberVO.setEmail("Lee2jy@test.com");
 		memberVO.setPoint(100);
 		memberVO.setEnabled(true);
 		memberVO.setLevels("ROLE_USER");
@@ -77,7 +77,7 @@ public class DataSourceTest {
 		public void testUpdateMember() throws Exception{
 		//memberVO를 사용하기위해 클래스변수를 생성
 		MemberVO memberVO = new MemberVO();
-		memberVO.setUser_id("user02");
+		memberVO.setUser_id("user00");
 		memberVO.setUser_pw("1234");
 		memberVO.setUser_name("이주영");
 		memberVO.setEmail("Leejy@test.com");
