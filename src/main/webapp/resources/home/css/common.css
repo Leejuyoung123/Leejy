@@ -130,7 +130,7 @@ hr {display:none;}
 header {position:relative; left:0; top:0; width:100%; height:113px; background:linear-gradient(-45deg, #000000a8, transparent);  width:100;height:100; z-index:100;}
 header .header_area {/*position:relative;*/}
 header .header_area h1 {float:left; padding:25px 0 0;}
-header .header_area h1 a {display:block; width:270px; height:71px; text-indent:-9999px; overflow:hidden; background:url(../img/main_logo.png) no-repeat;}
+header .header_area h1 a {display:block; width:270px; height:71px; text-indent:-9999px; overflow:hidden; background:url(../img/mlogo.png) no-repeat;}
 header .header_area .openMOgnb {display:none;}
 .header_cont {float:right; width:780px;padding-right:10px;}
 .header_cont .util {text-align: right; padding-top:10px;}
